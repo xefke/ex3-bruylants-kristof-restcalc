@@ -6,7 +6,17 @@
 
     <style>
         body {font-size: 1.5em;}
-        button  {
+
+        [type=button]  {
+            font-size: .8em;
+            width: 60px;
+            height: 50px;
+            background-color: #f2f2f2;
+            border: 1px solid #999999;
+            margin-right: -7px;
+            margin-bottom: -1px;
+        }
+        [type=submit]  {
             font-size: .8em;
             width: 60px;
             height: 50px;
@@ -20,54 +30,59 @@
 </head>
 <body>
 
-<!-- <script src="main.js"></script> -->
+<script>
+    var pressedNumber = "";
+
+    function getValue(num) {
+        pressedNumber += num;
+        document.getElementById("resultBox").value = pressedNumber;
+        console.log(pressedNumber);
+    };
+</script>
 
 <br />
-
+<form method="get" actions="/calculate">
 <!-- The Layout -->
 <!-- The Result Box -->
-<input id="resultBox"
-       type="text"
-       value="0"
-       style="
-      width:231px;
-      height:60px;
-      background-color:#bfbfbf;
-      font-size:1.75em;
-      color:white;
-      text-align:right">
+<input type="text"
+       id="resultBox"
+       name="resultBox"
+       value""
+       style="width:231px; height:60px; background-color:#bfbfbf; font-size:1.75em; color:white; text-align:right">
 <br />
 
 <!-- The Buttons -->
 <!-- First row buttons -->
-<button id="clear" onclick="clearResult()" style="background-color:#e6e6e6">AC</button>
-<button id="plus_minus" onclick="changeSign()" style="background-color:#e6e6e6">+/-</button>
-<button id="percentage" onclick="toPercentage()" style="background-color:#e6e6e6">%</button>
-<button id="divide" onclick="storeSign('div')" style="background-color:orange;color:white;border:1px solid #808080">/</button>
+<input type="button" id="clear" value ="AC" onclick="getValue(this.value)" style="background-color:#e6e6e6"></inputbutton>
+<input type="button" id="plus_minus" value ="+/-" onclick="getValue(this.value)" style="background-color:#e6e6e6"></button>
+<input type="button" id="percentage" value ="%" onclick="getValue(this.value)" style="background-color:#e6e6e6"></button>
+<input type="button" id="divide" value ="/" onclick="getValue(this.value)" style="background-color:orange;color:white;border:1px solid #808080"></button>
 <br />
 <!-- Second row buttons -->
-<button id="seven" onclick="clickedOn(7)">7</button>
-<button id="eight" onclick="clickedOn(8)">8</button>
-<button id="nine" onclick="clickedOn(9)">9</button>
-<button id="multiply" onclick="storeSign('mul')" style="background-color:orange;color:white;border:1px solid #808080">x</button>
+<input type="button" id="seven" value ="7" onclick="getValue(this.value)"></button>
+<input type="button" id="eight" value ="8" onclick="getValue(this.value)"></button>
+<input type="button" id="nine" value ="9" onclick="getValue(this.value)"></button>
+<input type="button" id="multiply" value ="*" onclick="getValue(this.value)" style="background-color:orange;color:white;border:1px solid #808080"></button>
 <br />
 <!-- Third row buttons -->
-<button id="four" onclick="clickedOn(4)">4</button>
-<button id="five" onclick="clickedOn(5)">5</button>
-<button id="six" onclick="clickedOn(6)">6</button>
-<button id="subtract" onclick="storeSign('sub')" style="background-color:orange;color:white;border:1px solid #808080">-</button>
+<input type="button" id="four" value ="4" onclick="getValue(this.value)"></button>
+<input type="button" id="five" value ="5" onclick="getValue(this.value)"></>
+<input type="button" id="six" value ="6" onclick="getValue(this.value)"></button>
+<input type="button" id="subtract" value ="-" onclick="getValue(this.value)" style="background-color:orange;color:white;border:1px solid #808080"></button>
 <br />
 <!-- Fourth row buttons -->
-<button id="one" onclick="clickedOn(1)">1</button>
-<button id="two" onclick="clickedOn(2)">2</button>
-<button id="three" onclick="clickedOn(3)">3</button>
-<button id="add" onclick="storeSign('add')" style="background-color:orange;color:white;border:1px solid #808080">+</button>
+<input type="button" id="one" value ="1" onclick="getValue(this.value)"></button>
+<input type="button" id="two" value ="2" onclick="getValue(this.value)"></>
+<input type="button" id="three" value ="3" onclick="getValue(this.value)"></button>
+<input type="button" id="add" value ="+" onclick="getValue(this.value)" style="background-color:orange;color:white;border:1px solid #808080"></button>
 <br />
 <!-- Fifth row buttons -->
-<button id="zero" onclick="clickedOn(0)" style="width:119px">0</button>
-<button id="comma" onclick="clickedOn('.')">,</button>
-<button id="equals" onclick="showResult()" style="background-color:orange;color:white;border:1px solid #808080">=</button>
+<input type="button" id="zero" value ="0" onclick="getValue(this.value)" style="width:119px"></button>
+<input type="button" id="comma" value ="." onclick="getValue(this.value)"></button>
+<input type="submit" id="equals" value ="=" onclick="getValue(this.value)"></button>
 <br />
+</form>
+
 
 </body>
 </html>

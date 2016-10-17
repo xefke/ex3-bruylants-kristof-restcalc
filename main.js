@@ -5,13 +5,25 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.text());
 
-Initial declaration of variables
- var result = 0;
- var pressedNumber = null;
- var pressedSign = null;
+/* Initial declaration of variables */
 
-app.get('/',function(request,response){
+//var result = '0';
+//var pressedSign = null;
+
+
+
+
+app.get('/',function (request,response) {
     response.sendFile(__dirname + '/index.html');
+    });
+
+
+
+app.get('/calculate',function (req,res) {
+    console.log(req.query.resultBox);
+    var result = req.query.resultBox;
+    totresult.push("Calculation Result is " + result)
+    res.send(totresult);
     });
 
 
