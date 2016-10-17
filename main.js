@@ -1,15 +1,44 @@
 
-//var express = require('express');
-//var app = express();
-//var bodyParser = require('body-parser');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
-//app.use(bodyParser.text());
-/* Initial declaration of variables */
+app.use(bodyParser.text());
+
+Initial declaration of variables
+ var result = 0;
+ var pressedNumber = null;
+ var pressedSign = null;
+
+app.get('/',function(request,response){
+    response.sendFile(__dirname + '/index.html');
+    });
+
+
+
+
+
+
+
+
+
+
+var server = app.listen(3000, function () {
+    var host = server.address().address
+    var port = server.address().port
+
+    console.log("server is running on http://%s:%s", host, port)
+});
+
+
+
+/* Initial declaration of variables
 var result = 0;
 var pressedNumber = null;
 var pressedSign = null;
 
-/* Displays the number that is pressed on the calculator */
+/* Displays the number that is pressed on the calculator
+
 function clickedOn(num) {
     if ((num == ".") && (pressedNumber == null)) {
         pressedNumber = "0."
@@ -25,7 +54,7 @@ function clickedOn(num) {
     document.getElementById("resultBox").value = pressedNumber;
 }
 
-/* Stores the pressed sign but first adds any pending pressedNumbers to the result */
+/* Stores the pressed sign but first adds any pending pressedNumbers to the result
 function storeSign(sign) {
     if (pressedSign == "eq") {
         pressedSign = sign;
@@ -36,7 +65,7 @@ function storeSign(sign) {
     document.getElementById("resultBox").value = result;
 }
 
-/* Does the actual calculation, adding the value to result */
+/* Does the actual calculation, adding the value to result
 function numToResult(num){
     if ((result == 0) && (pressedSign == null)) {
         result = Number(num);
@@ -51,23 +80,23 @@ function numToResult(num){
     } else if (pressedSign == "eq") {
         result = Number(num);
     }
-    pressedNumber = null; /* Clears the pressed number after numToResult */
-    pressedSign = null; /* Clears the sign after it has been used in the calculation */
+    pressedNumber = null; /* Clears the pressed number after numToResult
+    pressedSign = null; /* Clears the sign after it has been used in the calculation
 }
 
-/* Adds the % functionality */
+/* Adds the % functionality
 function toPercentage(){
     result = result/100;
     document.getElementById("resultBox").value = result;
 }
 
-/* Adds the change sign functionality */
+/* Adds the change sign functionality
 function changeSign(){
     result = result*-1;
     document.getElementById("resultBox").value = result;
 }
 
-/* Shows the result of the calculation. Also */
+/* Shows the result of the calculation. Also
 function showResult(){
     if (pressedNumber != null)  {
         numToResult(pressedNumber);
@@ -77,7 +106,7 @@ function showResult(){
     }
     document.getElementById("resultBox").value = result;
 }
-/* Clears everything to start over */
+/* Clears everything to start over
 function clearResult() {
     result = 0;
     pressedSign = null;
@@ -88,12 +117,4 @@ function clearResult() {
 var myFunction = function () {
     console.log(hello);
 };
-
-
-//app.get("/",function(request,response){
-//    response.sendfile(__dirname+"/calculator.html")
-//    });
-
-
-//app.listen(4567);
-//console.log("server is running");
+*/
