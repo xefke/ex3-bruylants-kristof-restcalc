@@ -6,9 +6,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.text());
 
 /* Initial declaration of variables */
-
-var result = 4;
-//var pressedSign = null;
+var result = 0;
 
 app.get('/calculate', function (request,response) {
     response.send('The result is: ' + result);
@@ -32,21 +30,6 @@ app.post('/calculate/mul', function (request,response) {
     response.status(204).send();
 });
 
-/*
-app.get('/',function (request,response) {
-    response.sendFile(__dirname + '/index.html');
-    });
-
-
-app.get('/calculate',function (req,res) {
-
-    var result = req.query.resultBox;
-    totresult.push("Calculation Result is " + result)
-    console.log(totresult);
-    res.send(totresult);
-    });
-*/
-
 var server = app.listen(3000, function () {
     var host = server.address().address
     var port = server.address().port
@@ -54,3 +37,17 @@ var server = app.listen(3000, function () {
     console.log("server is running on http://%s:%s", host, port)
 });
 
+app.get('/',function (request,response) {
+    response.sendFile(__dirname + '/index.html');
+});
+
+/*
+
+ app.get('/calculate',function (req,res) {
+
+ var result = req.query.resultBox;
+ totresult.push("Calculation Result is " + result)
+ console.log(totresult);
+ res.send(totresult);
+ });
+ */
