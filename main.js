@@ -7,8 +7,38 @@ app.use(bodyParser.text());
 
 /* Initial declaration of variables */
 
-//var result = '0';
+var result = 4;
 //var pressedSign = null;
+
+app.get('/calculate', function (request,response) {
+    response.send('The result is: ' + result);
+});
+
+app.post('/calculate/add', function (request,response) {
+    var value = request.body;
+    result += Number(value);
+    response.status(204).send();
+});
+
+app.post('/calculate/ded', function (request,response) {
+    var value = request.body;
+    result -= Number(value);
+    response.status(204).send();
+});
+
+app.post('/calculate/mul', function (request,response) {
+    var value = request.body;
+    result *= Number(value);
+    response.status(204).send();
+});
+
+app.post('/calculate/div', function (request,response) {
+    var value = request.body;
+    result /= Number(value);
+    response.status(204).send();
+});
+
+
 
 
 
@@ -18,11 +48,11 @@ app.get('/',function (request,response) {
     });
 
 
-
 app.get('/calculate',function (req,res) {
-    console.log(req.query.resultBox);
+
     var result = req.query.resultBox;
     totresult.push("Calculation Result is " + result)
+    console.log(totresult);
     res.send(totresult);
     });
 
@@ -42,91 +72,3 @@ var server = app.listen(3000, function () {
     console.log("server is running on http://%s:%s", host, port)
 });
 
-
-
-/* Initial declaration of variables
-var result = 0;
-var pressedNumber = null;
-var pressedSign = null;
-
-/* Displays the number that is pressed on the calculator
-
-function clickedOn(num) {
-    if ((num == ".") && (pressedNumber == null)) {
-        pressedNumber = "0."
-    } else if (num == ".") {
-        pressedNumber = pressedNumber + num.toString();
-    } else if (pressedNumber == null) {
-        pressedNumber = num;
-    } else if (pressedNumber == "0") {
-        pressedNumber = num;
-    } else {
-        pressedNumber = pressedNumber.toString()+num.toString();
-    }
-    document.getElementById("resultBox").value = pressedNumber;
-}
-
-/* Stores the pressed sign but first adds any pending pressedNumbers to the result
-function storeSign(sign) {
-    if (pressedSign == "eq") {
-        pressedSign = sign;
-    } else {
-        numToResult(pressedNumber);
-        pressedSign = sign;
-    }
-    document.getElementById("resultBox").value = result;
-}
-
-/* Does the actual calculation, adding the value to result
-function numToResult(num){
-    if ((result == 0) && (pressedSign == null)) {
-        result = Number(num);
-    } else if (pressedSign == "add") {
-        result += Number(num);
-    } else if (pressedSign == "sub") {
-        result -= Number(num);
-    } else if (pressedSign == "mul") {
-        result *= Number(num);
-    } else if (pressedSign == "div") {
-        result /= Number(num);
-    } else if (pressedSign == "eq") {
-        result = Number(num);
-    }
-    pressedNumber = null; /* Clears the pressed number after numToResult
-    pressedSign = null; /* Clears the sign after it has been used in the calculation
-}
-
-/* Adds the % functionality
-function toPercentage(){
-    result = result/100;
-    document.getElementById("resultBox").value = result;
-}
-
-/* Adds the change sign functionality
-function changeSign(){
-    result = result*-1;
-    document.getElementById("resultBox").value = result;
-}
-
-/* Shows the result of the calculation. Also
-function showResult(){
-    if (pressedNumber != null)  {
-        numToResult(pressedNumber);
-        storeSign("eq");
-    } else {
-        storeSign("eq");
-    }
-    document.getElementById("resultBox").value = result;
-}
-/* Clears everything to start over
-function clearResult() {
-    result = 0;
-    pressedSign = null;
-    pressedNumber = null;
-    document.getElementById("resultBox").value = result;
-}
-
-var myFunction = function () {
-    console.log(hello);
-};
-*/
