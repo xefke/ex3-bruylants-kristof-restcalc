@@ -32,17 +32,7 @@ app.post('/calculate/mul', function (request,response) {
     response.status(204).send();
 });
 
-app.post('/calculate/div', function (request,response) {
-    var value = request.body;
-    result /= Number(value);
-    response.status(204).send();
-});
-
-
-
-
-
-
+/*
 app.get('/',function (request,response) {
     response.sendFile(__dirname + '/index.html');
     });
@@ -55,15 +45,7 @@ app.get('/calculate',function (req,res) {
     console.log(totresult);
     res.send(totresult);
     });
-
-
-
-
-
-
-
-
-
+*/
 
 var server = app.listen(3000, function () {
     var host = server.address().address
